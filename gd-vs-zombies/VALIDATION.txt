@@ -1,0 +1,40 @@
+Validation record — GD vs Zombies v0.1.0
+Date: 2026-10-05
+
+Executed locally with GCC 13, C++23, -Wall -Wextra -Werror:
+  PASS economy, cost, occupancy, invalid coordinates and card cooldowns
+  PASS pause freezes movement, economy, placement and cooldowns
+  PASS closest-target projectile collision and lane isolation
+  PASS freezing changes enemy movement
+  PASS bomb area, consumption and unique kill credit
+  PASS wall blocks enemies and eventually breaks
+  PASS single-use mower, lane isolation, second breach and defeat
+  PASS matching simulation at 30 and 60 rendered frames per second
+  PASS scheduled wave completes and victory freezes the game
+Result: 9/9 test groups passed.
+
+The same 9 test groups passed with UndefinedBehaviorSanitizer enabled:
+  -fsanitize=undefined -fno-sanitize-recover=all
+AddressSanitizer/LeakSanitizer could not complete in the restricted runtime
+because process inspection was unavailable; no ASan pass is claimed.
+
+Full-campaign simulation:
+  seeds 1 through 20, default starting energy 275, all five waves.
+  The scripted player uses the normal placement API, prices and cooldowns.
+  20/20 wins, 75 kills each, 246 to 266 simulated seconds.
+This verifies campaign completion is reachable, not human playtest quality.
+
+Checked against official headers/bindings:
+  SimplePlayer::create/updatePlayerFrame/setSecondColor
+  ButtonSprite::create overload used by the menu button
+  CCMenuItemSpriteExtra::create(CCNode*, CCObject*, SEL_MenuHandler)
+  CCDrawNode::drawPolygon/drawDot/drawSegment
+  CCLayer::keyDown(enumKeyCodes, double) in Geode v5.10.1
+
+NOT executed:
+  Windows native DLL build or .geode packaging
+  GitHub Actions workflow
+  Geometry Dash launch, runtime rendering, input and audio
+  Interaction with other installed mods or texture packs
+
+No installable .geode binary is supplied in the source archive.

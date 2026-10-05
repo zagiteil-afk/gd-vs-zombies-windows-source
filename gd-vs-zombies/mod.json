@@ -1,0 +1,10 @@
+{
+  "geode": "5.10.1",
+  "gd": { "win": "2.2081" },
+  "id": "garden.gd_vs_zombies",
+  "name": "GD vs Zombies",
+  "version": "v0.1.0",
+  "developer": "Garden Project",
+  "description": "A five-lane tower-defense minigame with native Geometry Dash icons. Defend your lawn against five waves of corrupted cubes.",
+  "tags": ["gameplay"]
+}
